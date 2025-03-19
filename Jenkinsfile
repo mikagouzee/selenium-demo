@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage('Test'){
             steps{
-                bat 'node ./tests/test.js'
+                sh 'node ./tests/test.js'
             }
         }
     }
