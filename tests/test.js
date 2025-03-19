@@ -1,6 +1,14 @@
 const { By, Key, Builder } = require("selenium-webdriver");
+const firefox = require('selenium-webdriver/firefox');
+
 async function test_case() {
-    let driver = await new Builder().forBrowser('firefox').build()
+    let options = new firefox.Options();
+
+    let driver = await new Builder().forBrowser('firefox')
+    .setFirefoxOptions(options.addArguments('--headless'))
+    .build()
+
+
     try {
         // Initialize the WebDriver session
         await driver.get("https://www.selenium.dev/selenium/web/web-form.html")
@@ -11,6 +19,7 @@ async function test_case() {
         await driver.findElement(By.name("my-password")).sendKeys("deqf")
         await driver.findElement(By.id("my-text-id")).click()
         await driver.findElement(By.id("my-text-id")).sendKeys("ffqc")
+        console.log("success");
     } catch (error) {
         console.error("An error occurred:", error);
     } finally {
