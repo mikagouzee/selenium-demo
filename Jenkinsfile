@@ -2,7 +2,7 @@ pipeline{
     agent {
         label "172.16.10.51"
     }
-    
+
     tools {
         nodejs "node"
     }
@@ -10,7 +10,7 @@ pipeline{
     stages {
         stage('prep-server'){
             steps{
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('Test'){
